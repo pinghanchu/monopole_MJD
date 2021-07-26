@@ -11,7 +11,8 @@
 #
 /testex/det/setMat G4_Si
 /testex/det/setSizeX  10 cm
-/testex/det/setSizeYZ 20 cm
+/testex/det/setSizeY  10 cm
+/testex/det/setSizeZ  10 cm
 /testex/det/setStepSize 0.2 mm
 
 /testex/run/binSize 0.2 mm
