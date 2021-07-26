@@ -70,9 +70,8 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   }  
 
   fParticleGun->GeneratePrimaryVertex(anEvent);
-
   fEventID = anEvent->GetEventID();
-  G4cout << fEventID << G4endl;
+
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

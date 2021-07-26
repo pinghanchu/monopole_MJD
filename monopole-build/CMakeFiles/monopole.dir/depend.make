@@ -2643,6 +2643,7 @@ CMakeFiles/monopole.dir/src/RunActionMessenger.cc.o: /mjsw/GEANT/install/include
 CMakeFiles/monopole.dir/src/RunActionMessenger.cc.o: /mjsw/GEANT/install/include/Geant4/templates.hh
 CMakeFiles/monopole.dir/src/RunActionMessenger.cc.o: /mjsw/GEANT/install/include/Geant4/tls.hh
 
+CMakeFiles/monopole.dir/src/SteppingAction.cc.o: ../include/EventAction.hh
 CMakeFiles/monopole.dir/src/SteppingAction.cc.o: ../include/Run.hh
 CMakeFiles/monopole.dir/src/SteppingAction.cc.o: ../include/SteppingAction.hh
 CMakeFiles/monopole.dir/src/SteppingAction.cc.o: ../src/SteppingAction.cc
@@ -2906,6 +2907,7 @@ CMakeFiles/monopole.dir/src/SteppingAction.cc.o: /mjsw/GEANT/install/include/Gea
 CMakeFiles/monopole.dir/src/SteppingAction.cc.o: /mjsw/GEANT/install/include/Geant4/G4UImessenger.hh
 CMakeFiles/monopole.dir/src/SteppingAction.cc.o: /mjsw/GEANT/install/include/Geant4/G4UIparameter.hh
 CMakeFiles/monopole.dir/src/SteppingAction.cc.o: /mjsw/GEANT/install/include/Geant4/G4UItokenNum.hh
+CMakeFiles/monopole.dir/src/SteppingAction.cc.o: /mjsw/GEANT/install/include/Geant4/G4UserEventAction.hh
 CMakeFiles/monopole.dir/src/SteppingAction.cc.o: /mjsw/GEANT/install/include/Geant4/G4UserStackingAction.hh
 CMakeFiles/monopole.dir/src/SteppingAction.cc.o: /mjsw/GEANT/install/include/Geant4/G4UserSteppingAction.hh
 CMakeFiles/monopole.dir/src/SteppingAction.cc.o: /mjsw/GEANT/install/include/Geant4/G4UserTrackingAction.hh

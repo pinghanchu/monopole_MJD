@@ -51,7 +51,7 @@ TrackingAction::~TrackingAction()
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 void TrackingAction::PreUserTrackingAction(const G4Track* track)
 {
-  G4cout << track->GetTrackID() << G4endl;
+  //G4cout << track->GetTrackID() << G4endl;
   //Run* run = static_cast<Run*>(G4RunManager::GetRunManager()->GetNonConstCurrentRun());
 
   //G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
@@ -90,7 +90,7 @@ void TrackingAction::PreUserTrackingAction(const G4Track* track)
 
 void TrackingAction::PostUserTrackingAction(const G4Track* aTrack)
 {
-  G4cout << aTrack->GetTrackID() << G4endl;
+  //G4cout << aTrack->GetTrackID() << G4endl;
   // extract Projected Range of primary particle
   //if (aTrack->GetTrackID() == 1) {
   //  Run* run = static_cast<Run*>(

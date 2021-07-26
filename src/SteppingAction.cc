@@ -35,13 +35,13 @@
 #include "G4Step.hh"
 #include "G4RunManager.hh"
 #include "Run.hh"
-
+#include "EventAction.hh"
 #include "Randomize.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-SteppingAction::SteppingAction()
- : G4UserSteppingAction()
+SteppingAction::SteppingAction(EventAction* evt)
+  : G4UserSteppingAction(),fEventAction(evt)
 {}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -53,6 +53,10 @@ SteppingAction::~SteppingAction()
 
 void SteppingAction::UserSteppingAction(const G4Step* aStep)
 {
+
+
+  G4int eventID = fEventAction->GetEventID();
+
   G4double edep = aStep->GetTotalEnergyDeposit();
   if (edep <= 0.) { return; }
 
@@ -120,7 +124,7 @@ void SteppingAction::UserSteppingAction(const G4Step* aStep)
   analysisManager->FillNtupleDColumn(14,MomX);
   analysisManager->FillNtupleDColumn(15,MomY);
   analysisManager->FillNtupleDColumn(16,MomZ);
-  //analysisManager->FillNtupleIColumn(17,eventID);
+  analysisManager->FillNtupleIColumn(17,eventID);
   analysisManager->AddNtupleRow();
 
   

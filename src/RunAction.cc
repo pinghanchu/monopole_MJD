@@ -56,11 +56,7 @@ RunAction::RunAction(DetectorConstruction* det, PrimaryGeneratorAction* kin)
   analysisManager->SetVerboseLevel(1);
   analysisManager->SetActivation(true);
   
-  G4int eventid = fKinematic->GetEventID();
-  G4cout << "Event:" << eventid << G4endl;
-  //analysisManager->FillNtupleIColumn(17,eventID);                                                         
-  //analysisManager->AddNtupleRow();
-
+  //G4int eventid = fKinematic->GetEventID();
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

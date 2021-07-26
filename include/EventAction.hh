@@ -53,13 +53,13 @@ public:
 
   virtual void  BeginOfEventAction(const G4Event*);
   virtual void    EndOfEventAction(const G4Event*);
-    
+  inline G4int GetEventID(){return fEventID;}
   //void AddAbs(G4double de, G4double dl) {fEnergyAbs += de; fTrackLAbs += dl;};
   //void AddGap(G4double de, G4double dl) {fEnergyGap += de; fTrackLGap += dl;};
     
 private:
    RunAction*    fRunAct;
-
+   G4int         fEventID;
   //HistoManager* fHistoManager;
       
   //G4double  fEnergyAbs, fEnergyGap;
