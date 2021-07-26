@@ -1,0 +1,1 @@
+/global/homes/p/pchu/work/g4work/monopole_MJD/monopole-build/CMakeFiles/monopole.dir
