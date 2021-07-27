@@ -9,13 +9,13 @@
 /testex/run/verbose 1
 /tracking/verbose 0
 #
-/testex/det/setMat G4_Si
+/testex/det/setMat G4_Ge
 /testex/det/setSizeX  10 cm
 /testex/det/setSizeY  10 cm
 /testex/det/setSizeZ  10 cm
-/testex/det/setStepSize 0.2 mm
+/testex/det/setStepSize 0.5 mm
 
-/testex/run/binSize 0.2 mm
+/testex/run/binSize 0.5 mm
 #
 /process/em/verbose 1
 /run/initialize

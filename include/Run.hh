@@ -56,7 +56,7 @@ public:
            
   inline void SetVerbose(G4int verbose) { fVerboseLevel = verbose; }
   inline G4int GetVerbose() const       { return fVerboseLevel; }
-  inline G4double GetOffsetX() const    { return fOffsetX; }
+  inline G4double GetOffsetZ() const    { return fOffsetZ; }
 
   inline void AddProjRange (G4double x) { fProjRange += x; 
                                           fProjRange2 += x*x; };
@@ -74,7 +74,7 @@ private:
   G4int                   runid;
   G4int                   fNevt;
 
-  G4double                fOffsetX;
+  G4double                fOffsetZ;
   G4double                fProjRange; 
   G4double                fProjRange2;
 

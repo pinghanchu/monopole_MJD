@@ -48,7 +48,8 @@ DetectorMessenger::DetectorMessenger(DetectorConstruction * det)
    fDetDir(0),
    fMaterCmd(0),
    fSizeXCmd(0),
-   fSizeYZCmd(0),
+   fSizeYCmd(0),
+   fSizeZCmd(0),
    fStepSizeCmd(0),
    fMagFieldCmd(0)
     
@@ -68,12 +69,20 @@ DetectorMessenger::DetectorMessenger(DetectorConstruction * det)
   fSizeXCmd->SetUnitCategory("Length");
   fSizeXCmd->AvailableForStates(G4State_PreInit,G4State_Idle);
   
-  fSizeYZCmd = new G4UIcmdWithADoubleAndUnit("/testex/det/setSizeYZ",this);
-  fSizeYZCmd->SetGuidance("Set sizeYZ of the absorber");
-  fSizeYZCmd->SetParameterName("SizeYZ",false);
-  fSizeYZCmd->SetRange("SizeYZ>0.");
-  fSizeYZCmd->SetUnitCategory("Length");
-  fSizeYZCmd->AvailableForStates(G4State_PreInit,G4State_Idle);
+  fSizeYCmd = new G4UIcmdWithADoubleAndUnit("/testex/det/setSizeY",this);
+  fSizeYCmd->SetGuidance("Set sizeY of the absorber");
+  fSizeYCmd->SetParameterName("SizeY",false);
+  fSizeYCmd->SetRange("SizeY>0.");
+  fSizeYCmd->SetUnitCategory("Length");
+  fSizeYCmd->AvailableForStates(G4State_PreInit,G4State_Idle);
+
+  fSizeZCmd = new G4UIcmdWithADoubleAndUnit("/testex/det/setSizeZ",this);
+  fSizeZCmd->SetGuidance("Set sizeZ of the absorber");
+  fSizeZCmd->SetParameterName("SizeZ",false);
+  fSizeZCmd->SetRange("SizeZ>0.");
+  fSizeZCmd->SetUnitCategory("Length");
+  fSizeZCmd->AvailableForStates(G4State_PreInit,G4State_Idle);
+
 
   fStepSizeCmd = new G4UIcmdWithADoubleAndUnit("/testex/det/setStepSize",this);
   fStepSizeCmd->SetGuidance("Set maxStepSize in the absorber");
@@ -103,7 +112,8 @@ DetectorMessenger::~DetectorMessenger()
 {
   delete fMaterCmd;
   delete fSizeXCmd;
-  delete fSizeYZCmd;
+  delete fSizeYCmd;
+  delete fSizeZCmd;
   delete fStepSizeCmd;
   delete fMagFieldCmd;
   delete fUpdateCmd;
@@ -120,9 +130,12 @@ void DetectorMessenger::SetNewValue(G4UIcommand* command,G4String newValue)
   if( command == fSizeXCmd )
    { fDetector->SetSizeX(fSizeXCmd->GetNewDoubleValue(newValue));}
    
-  if( command == fSizeYZCmd )
-   { fDetector->SetSizeYZ(fSizeYZCmd->GetNewDoubleValue(newValue));}
+  if( command == fSizeYCmd )
+   { fDetector->SetSizeY(fSizeYCmd->GetNewDoubleValue(newValue));}
       
+  if( command == fSizeZCmd )
+    { fDetector->SetSizeZ(fSizeZCmd->GetNewDoubleValue(newValue));}
+
   if( command == fMagFieldCmd )
    { fDetector->SetMagField(fMagFieldCmd->GetNewDoubleValue(newValue));}
 

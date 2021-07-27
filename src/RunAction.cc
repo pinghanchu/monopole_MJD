@@ -123,7 +123,7 @@ void RunAction::Book()
   G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();  
   analysisManager->SetFirstHistoId(1);   
 
-  G4double length = fDetector->GetAbsorSizeX();
+  G4double length = fDetector->GetAbsorSizeZ();
   G4int nbBins = G4lrint(length / fBinLength);
   // Create tree
   analysisManager->CreateNtuple("MonopoleTree","Monopole Tree");

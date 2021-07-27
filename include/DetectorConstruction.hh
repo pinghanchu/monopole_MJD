@@ -57,7 +57,8 @@ public:
 
   // set geometry and field parameters
   void SetSizeX(G4double);
-  void SetSizeYZ(G4double);              
+  void SetSizeY(G4double);              
+  void SetSizeZ(G4double);
   void SetMaterial(const G4String&);            
   void SetMagField   (G4double v) { fZMagFieldValue = v; }
   void SetMaxStepSize(G4double);
@@ -66,8 +67,8 @@ public:
   virtual void ConstructSDandField();
           
   // access to geometry
-  inline G4double     GetWorldSizeX()    {return fWorldSizeX;};
-  inline G4double     GetAbsorSizeX()    {return fAbsorSizeX;};
+  inline G4double     GetWorldSizeZ()    {return fWorldSizeZ;};
+  inline G4double     GetAbsorSizeZ()    {return fAbsorSizeZ;};
   inline G4double     GetMaxStepSize()   {return fMaxStepSize;};
   inline const G4Material* GetAbsorMaterial() {return fAbsorMaterial;};
 
@@ -78,10 +79,12 @@ private:
   void PrintParameters();
   
   G4double            fWorldSizeX;
-  G4double            fWorldSizeYZ;
+  G4double            fWorldSizeY;
+  G4double            fWorldSizeZ;
   G4Material*         fWorldMaterial;           
   G4double            fAbsorSizeX;
-  G4double            fAbsorSizeYZ;
+  G4double            fAbsorSizeY;
+  G4double            fAbsorSizeZ;
   G4double            fMaxStepSize;
   G4Material*         fAbsorMaterial;
   G4LogicalVolume*    fLogAbsor;

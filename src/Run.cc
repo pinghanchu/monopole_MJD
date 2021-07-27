@@ -47,8 +47,8 @@ Run::Run(DetectorConstruction* det, PrimaryGeneratorAction* prim)
 
   fAnalysisManager = G4AnalysisManager::Instance();
 
-  G4double length  = fDetector->GetAbsorSizeX();
-  fOffsetX = -0.5 * length;
+  G4double length  = fDetector->GetAbsorSizeZ();
+  fOffsetZ = 0.5 * length;
 
   fVerboseLevel = 1;
   fNevt = 0;
@@ -110,7 +110,7 @@ void Run::EndOfRun(double binLength)
   if(GetVerbose() > 0){
     G4cout << "\n The run consists of " << nEvents << " "<< particle << " of "
            << G4BestUnit(energy,"Energy") << " through " 
-           << G4BestUnit(fDetector->GetAbsorSizeX(),"Length") << " of "
+           << G4BestUnit(fDetector->GetAbsorSizeZ(),"Length") << " of "
            << matName << " (density: " 
            << G4BestUnit(density,"Volumic Mass") << ")" << G4endl;
     //G4cout<<"Proj "<<fProjRange<<" "<<fProjRange2<<G4endl;

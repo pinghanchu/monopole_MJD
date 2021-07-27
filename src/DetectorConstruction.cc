@@ -71,17 +71,25 @@ DetectorConstruction::DetectorConstruction()
    fDetectorMessenger(0)
 {
   // default parameter values
-  fAbsorSizeX = fAbsorSizeYZ = 10 * cm;
-  fWorldSizeX = fWorldSizeYZ = 1.2 * fAbsorSizeX;
+  
+  fAbsorSizeX = fAbsorSizeY = fAbsorSizeZ = 10 * cm;
+  fWorldSizeX = fWorldSizeY = 10. * m;
+  fWorldSizeZ = 3000 * m;
   fMaxStepSize = 5 * mm;
+  G4cout << "World size X,Y:"<<fWorldSizeX << G4endl;
+
+  G4cout << "World size Z:"<<fWorldSizeZ << G4endl;
 
   //  fMonFieldSetup = G4MonopoleFieldSetup::GetMonopoleFieldSetup();
   fMonFieldSetup = new G4MonopoleFieldSetup();
 
   //SetMaterial("G4_Al");
   SetMaterial("G4_Ge");
-  fWorldMaterial = 
-    G4NistManager::Instance()->FindOrBuildMaterial("G4_Galactic");
+  
+  G4NistManager* nist = G4NistManager::Instance();
+  fWorldMaterial = nist->FindOrBuildMaterial("G4_Si");
+  
+  //fWorldMaterial=  G4NistManager::Instance()->FindOrBuildMaterial("G4_Galactic");  
 
   // create commands for interactive definition of the detector
   fDetectorMessenger = new DetectorMessenger(this);
@@ -106,7 +114,9 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   /****************************    World   *****************************/
   G4Box * sWorld = new G4Box("world",                                
-               fWorldSizeX / 2, fWorldSizeYZ / 2, fWorldSizeYZ / 2);
+               fWorldSizeX, fWorldSizeY, fWorldSizeZ);
+
+  G4Material* mat_Rock= new G4Material("Rock", 2.86 * g / cm3, 5);
 
   G4LogicalVolume * lWorld = new G4LogicalVolume(sWorld,
                                                  fWorldMaterial,
@@ -123,11 +133,9 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   /**************************    Absorber    ***************************/
   G4Box * sAbsor = new G4Box("Absorber",                   
-          fAbsorSizeX / 2, fAbsorSizeYZ / 2, fAbsorSizeYZ / 2);        
+          fAbsorSizeX / 2, fAbsorSizeY / 2, fAbsorSizeZ / 2);        
 
-  fLogAbsor = new G4LogicalVolume(sAbsor,        
-                                  fAbsorMaterial,
-                                  "Absorber");
+  fLogAbsor = new G4LogicalVolume(sAbsor, fAbsorMaterial, "Absorber");
   
   new G4PVPlacement(0,                                //no rotation
                     G4ThreeVector(),                //at (0,0,0)
@@ -161,21 +169,32 @@ void DetectorConstruction::SetSizeX(G4double value)
 {
   if(value > 0.0) {
     fAbsorSizeX = value; 
-    fWorldSizeX = 1.2 * fAbsorSizeX;
+    //fWorldSizeX = 1.2 * fAbsorSizeX;
     G4RunManager::GetRunManager()->GeometryHasBeenModified();
   }
 }
   
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void DetectorConstruction::SetSizeYZ(G4double value)
+void DetectorConstruction::SetSizeY(G4double value)
 {
   if(value > 0.0) {
-    fAbsorSizeYZ = value; 
-    fWorldSizeYZ = 1.2 * fAbsorSizeYZ;
+    fAbsorSizeY = value;
+    //fWorldSizeY = 1.2 * fAbsorSizeY;
     G4RunManager::GetRunManager()->GeometryHasBeenModified();
   }
 }  
+
+void DetectorConstruction::SetSizeZ(G4double value)
+{
+  if(value > 0.0) {
+    fAbsorSizeZ = value;
+    //fWorldSizeZ = 1.2 *fAbsorSizeZ;
+    G4RunManager::GetRunManager()->GeometryHasBeenModified();
+  }
+}
+
+
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 

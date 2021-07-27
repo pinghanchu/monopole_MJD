@@ -70,9 +70,9 @@ void SteppingAction::UserSteppingAction(const G4Step* aStep)
   G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
 
   //Bragg curve
-  G4double x = aStep->GetPreStepPoint()->GetPosition().x();
-  G4double dx = aStep->GetPostStepPoint()->GetPosition().x() - x;
-  x += dx*G4UniformRand() - run->GetOffsetX();
+  G4double x = aStep->GetPreStepPoint()->GetPosition().z();
+  G4double dx = aStep->GetPostStepPoint()->GetPosition().z() - x;
+  x += dx*G4UniformRand() - run->GetOffsetZ();
   run->FillHisto(1, x, edep);
 
   G4VPhysicalVolume* volume = aStep->GetPreStepPoint()->GetTouchableHandle()->GetVolume();
