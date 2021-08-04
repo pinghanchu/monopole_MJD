@@ -36,6 +36,8 @@
 
 #include "G4Material.hh"
 #include "G4Box.hh"
+#include "G4Tubs.hh"
+#include "G4Polycone.hh"
 #include "G4LogicalVolume.hh"
 #include "G4PVPlacement.hh"
 #include "G4UniformMagField.hh"
@@ -132,21 +134,104 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
 
   /**************************    Absorber    ***************************/
-  G4Box * sAbsor = new G4Box("Absorber",                   
-          fAbsorSizeX / 2, fAbsorSizeY / 2, fAbsorSizeZ / 2);        
+  /*G4Box * sAbsor = new G4Box("Absorber",                   
+  fAbsorSizeX / 2, fAbsorSizeY / 2, fAbsorSizeZ / 2);        
 
-  fLogAbsor = new G4LogicalVolume(sAbsor, fAbsorMaterial, "Absorber");
+  //Ge density: 5.33 g/cm^3
+  //If each detector is about a kg, volume=~188 cm^3
+  //Cylinder 4.5 cm radius, 3 cm half-z has a volume of ~191 cm^3
+  //Use this if the other implementation is too much
+  //G4Tubs *sAbsor = new G4Tubs("GeDet",0,4.5*cm,3*cm,0,2*M_PI);
+
+    fLogAbsor = new G4LogicalVolume(sAbsor, fAbsorMaterial, "Absorber");
+  fLogAbsor->SetUserLimits(new G4UserLimits(fMaxStepSize));
   
   new G4PVPlacement(0,                                //no rotation
                     G4ThreeVector(),                //at (0,0,0)
                     fLogAbsor,                        //logical volume
-                    "Absorber",                        //name
-                    lWorld,                               //mother  volume
-                    false,                        //no boolean operation
-                    0);                                //copy number
-  fLogAbsor->SetUserLimits(new G4UserLimits(fMaxStepSize));
+                   "Absorber",                        //name
+  lWorld,                               //mother  volume
+  false,                        //no boolean operation
+  0);                                //copy number
+  */
+  //PrintParameters();
 
-  PrintParameters();
+  //read detector file
+  using namespace std;
+  vector<string> Detectors;
+  string input;
+  G4String s;
+
+  G4int Detector_number;
+  G4String Detector_name;
+  G4String Detector_name_sol;
+  G4String Detector_name_log;
+  G4ThreeVector Detector_position;
+  G4int Detector_slices=0;
+  vector<G4double> Detector_r;
+  vector<G4double> Detector_z;
+  G4RotationMatrix* Detrotation = new G4RotationMatrix();
+  Detrotation->rotateX(180*deg);
+
+  int j =0;
+
+  ifstream in ("Detectorposition.txt");
+  while(getline(in,input)){
+    Detectors.push_back(input);
+  }
+  in.close();
+  G4cout << "-------" << Detectors.size() <<G4endl;
+
+  for (int i =0;i< (int)Detectors.size();i++){
+    G4cout << i << " " << Detectors[i] << endl;
+    j = 0;
+    Detector_number = 0;
+    Detector_r.clear();
+    Detector_z.clear();
+    stringstream ss(Detectors[i]);
+    while (ss >> s) {
+      j++;
+      if (j==1) Detector_number += atoi(s.c_str())*100;
+      else if (j==2) Detector_number += atoi(s.c_str())*10;
+      else if (j==3) Detector_number += atoi(s.c_str())*1;
+      else if (j==4) Detector_position.setX(atof(s.c_str())*mm);
+      else if (j==5) Detector_position.setY(atof(s.c_str())*mm);
+      else if (j==6) Detector_position.setZ(atof(s.c_str())*mm);
+      else if (j==7) Detector_name = "Det_" + s;
+      else if (j==8) Detector_slices = atoi(s.c_str());
+      else if (j==9) Detector_r.push_back((G4double) atof(s.c_str())*mm);
+      else if (j==10) Detector_z.push_back((G4double) atof(s.c_str())*mm);
+      else if (j==11) Detector_r.push_back((G4double) atof(s.c_str())*mm);
+      else if (j==12) Detector_z.push_back((G4double) atof(s.c_str())*mm);
+      else if (j==13) Detector_r.push_back((G4double) atof(s.c_str())*mm);
+      else if (j==14) Detector_z.push_back((G4double) atof(s.c_str())*mm);
+
+    }
+
+    if(Detector_slices==2){
+      Detector_r.push_back(Detector_r[1]+0.00001*mm);
+      Detector_z.push_back(Detector_z[1]+0.00001*mm);
+    }
+
+    Detector_position.setZ(Detector_position.z() + Detector_z[2] - 20*cm);
+
+    G4cout << j << " --- " << Detector_name << " " << Detector_number << " " << Detector_position <<  G4endl;
+
+    Detector_name_sol = Detector_name + "_sol";
+    Detector_name_log = Detector_name + "_log";
+    const G4double r_i[] = {0,0,0};
+    const G4double r[] = {Detector_r[0],Detector_r[1],Detector_r[2]};
+    const G4double z[] = {Detector_z[0],Detector_z[1],Detector_z[2]};
+
+    G4Polycone* Det_solid = new G4Polycone(Detector_name_sol,0,2*M_PI,3,z,r_i,r);
+    G4LogicalVolume* fLogAbsor = new G4LogicalVolume(Det_solid,fAbsorMaterial,Detector_name_log);
+    fLogAbsor->SetUserLimits(new G4UserLimits(fMaxStepSize));
+
+    new G4PVPlacement (Detrotation,Detector_position,fLogAbsor,Detector_name,lWorld,false,Detector_number,0);
+  }
+
+
+
 
   /************     always return the World volume     *****************/
   return pWorld;

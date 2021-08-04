@@ -38,6 +38,7 @@
 #include "G4Event.hh"
 #include "G4SystemOfUnits.hh"
 #include "g4root.hh"
+#include "Randomize.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -63,11 +64,14 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 {
 
   //this function is called at the begining of event
-  if(0 == anEvent->GetEventID() || !bPrimPositionDefined) {
+  //  if(0 == anEvent->GetEventID() || !bPrimPositionDefined) {
     G4double z0 = 0.5*(fDetector->GetWorldSizeZ()) + 1*um;
-    fParticleGun->SetParticlePosition(G4ThreeVector(0.0,0.0,z0));
+    G4double x0 = 2*(G4UniformRand()-0.5)*m;
+    G4double y0 = 2*(G4UniformRand()-0.5)*m;
+    G4cout << "X Y " << x0 << " " << y0 << G4endl << G4endl;
+    fParticleGun->SetParticlePosition(G4ThreeVector(x0,y0,z0));
     bPrimPositionDefined = true;
-  }  
+    //  }  
 
   fParticleGun->GeneratePrimaryVertex(anEvent);
   fEventID = anEvent->GetEventID();

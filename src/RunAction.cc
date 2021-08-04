@@ -147,6 +147,7 @@ void RunAction::Book()
   analysisManager->CreateNtupleDColumn("V");//15
   analysisManager->CreateNtupleDColumn("W");//16
   analysisManager->CreateNtupleIColumn("EventID");//17
+  analysisManager->CreateNtupleSColumn("VolumeName");//18
   analysisManager->FinishNtuple();
   // Create histograms
   analysisManager->CreateH1("h1","Edep (MeV/mm) along absorber (mm)", 
