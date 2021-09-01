@@ -47,7 +47,7 @@ PrimaryGeneratorAction::PrimaryGeneratorAction(DetectorConstruction* det)
    bPrimPositionDefined(false)
 {
   fParticleGun  = new G4ParticleGun(1);
-  fParticleGun->SetParticleEnergy(100 * GeV);
+  fParticleGun->SetParticleEnergy(100*GeV);
   fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0., 0., -1.));
 }
 

@@ -14,4 +14,30 @@ cmake -DGeant4_DIR=/mjsw/GEANT/install/lib64/Geant4-10.4.3/ ~/work/g4work/monopo
 
 make -j4
 
-./monopole monopole.in
+#Analysis
+1. ./monopole monopole.in
+This generates monopole.root
+
+2. Need to modify the monopole mass in ./src/G4MonopolePhysics.cc and re-compile before generating Monte Carlo
+Modify the line "fMonopoleMass = 1e12*GeV;"
+
+3. ./analysis/run.pl 1e12
+1e12 is the monopole mass used in G4MonopolePhysics.cc
+The script will run replace.pl and generate Monte Carlo with the energy from 1e-5 GeV to 1e5 GeV.
+
+4. ./analysis/replace.pl $erg
+$erg is the monopole energy. The script will modify the monopole energy in monopole.in.
+
+5. ./analysis/build.pl 1e12GeV
+1e12GeV is the monopole mass.
+The script will generate data.csv including information of each step.
+
+6. ./analysis/fill.cc 
+The macro will generate csv data from monopole.root.
+
+7. ./analysis/gatify.py
+The script will re-construct steps as events. ./data/event_[mass]_[energy].h5/csv
+Need to run python in the default environment of CORI and ">module load python".
+
+#Monte Carlo
+The unit of Monte Carlo: time(ns), energy(MeV), length(mm)

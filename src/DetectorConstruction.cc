@@ -205,7 +205,6 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
       else if (j==12) Detector_z.push_back((G4double) atof(s.c_str())*mm);
       else if (j==13) Detector_r.push_back((G4double) atof(s.c_str())*mm);
       else if (j==14) Detector_z.push_back((G4double) atof(s.c_str())*mm);
-
     }
 
     if(Detector_slices==2){

@@ -503,6 +503,8 @@ CMakeFiles/monopole.dir/src/DetectorConstruction.cc.o
  /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Vector/RotationZ.icc
  /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Vector/ThreeVector.h
  /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Vector/ThreeVector.icc
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Vector/TwoVector.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Vector/TwoVector.icc
  /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Vector/ZMxpv.h
  /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Vector/defs.h
  /mjsw/GEANT/install/include/Geant4/G4AffineTransform.hh
@@ -604,6 +606,10 @@ CMakeFiles/monopole.dir/src/DetectorConstruction.cc.o
  /mjsw/GEANT/install/include/Geant4/G4PhysicsVectorType.hh
  /mjsw/GEANT/install/include/Geant4/G4Plane3D.hh
  /mjsw/GEANT/install/include/Geant4/G4Point3D.hh
+ /mjsw/GEANT/install/include/Geant4/G4Polycone.hh
+ /mjsw/GEANT/install/include/Geant4/G4Polycone.icc
+ /mjsw/GEANT/install/include/Geant4/G4PolyconeHistorical.hh
+ /mjsw/GEANT/install/include/Geant4/G4PolyconeSide.hh
  /mjsw/GEANT/install/include/Geant4/G4Polyhedron.hh
  /mjsw/GEANT/install/include/Geant4/G4Pow.hh
  /mjsw/GEANT/install/include/Geant4/G4PrimaryParticle.hh
@@ -662,6 +668,9 @@ CMakeFiles/monopole.dir/src/DetectorConstruction.cc.o
  /mjsw/GEANT/install/include/Geant4/G4TrackingMessenger.hh
  /mjsw/GEANT/install/include/Geant4/G4TrajectoryContainer.hh
  /mjsw/GEANT/install/include/Geant4/G4Transform3D.hh
+ /mjsw/GEANT/install/include/Geant4/G4Tubs.hh
+ /mjsw/GEANT/install/include/Geant4/G4Tubs.icc
+ /mjsw/GEANT/install/include/Geant4/G4TwoVector.hh
  /mjsw/GEANT/install/include/Geant4/G4Types.hh
  /mjsw/GEANT/install/include/Geant4/G4UAdapter.hh
  /mjsw/GEANT/install/include/Geant4/G4UBox.hh
@@ -670,6 +679,8 @@ CMakeFiles/monopole.dir/src/DetectorConstruction.cc.o
  /mjsw/GEANT/install/include/Geant4/G4UImessenger.hh
  /mjsw/GEANT/install/include/Geant4/G4UIparameter.hh
  /mjsw/GEANT/install/include/Geant4/G4UItokenNum.hh
+ /mjsw/GEANT/install/include/Geant4/G4UPolycone.hh
+ /mjsw/GEANT/install/include/Geant4/G4UTubs.hh
  /mjsw/GEANT/install/include/Geant4/G4UniformMagField.hh
  /mjsw/GEANT/install/include/Geant4/G4UnitsTable.hh
  /mjsw/GEANT/install/include/Geant4/G4UnitsTable.icc
@@ -678,6 +689,8 @@ CMakeFiles/monopole.dir/src/DetectorConstruction.cc.o
  /mjsw/GEANT/install/include/Geant4/G4UserStackingAction.hh
  /mjsw/GEANT/install/include/Geant4/G4UserSteppingAction.hh
  /mjsw/GEANT/install/include/Geant4/G4UserTrackingAction.hh
+ /mjsw/GEANT/install/include/Geant4/G4VCSGface.hh
+ /mjsw/GEANT/install/include/Geant4/G4VCSGfaceted.hh
  /mjsw/GEANT/install/include/Geant4/G4VDigiCollection.hh
  /mjsw/GEANT/install/include/Geant4/G4VGraphicsScene.hh
  /mjsw/GEANT/install/include/Geant4/G4VHitsCollection.hh
@@ -1794,9 +1807,69 @@ CMakeFiles/monopole.dir/src/PrimaryGeneratorAction.cc.o
  ../include/DetectorConstruction.hh
  ../include/PrimaryGeneratorAction.hh
  /global/homes/p/pchu/work/g4work/monopole_MJD/src/PrimaryGeneratorAction.cc
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/DRand48Engine.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/DualRand.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/Hurd160Engine.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/Hurd288Engine.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/JamesRandom.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/MTwistEngine.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/MixMaxRng.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandBinomial.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandBinomial.icc
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandBit.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandBit.icc
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandBreitWigner.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandBreitWigner.icc
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandChiSquare.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandChiSquare.icc
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandEngine.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandExpZiggurat.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandExponential.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandExponential.icc
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandFlat.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandFlat.icc
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandGamma.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandGamma.icc
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandGauss.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandGauss.icc
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandGaussQ.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandGaussQ.icc
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandGaussT.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandGaussT.icc
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandGaussZiggurat.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandGeneral.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandGeneral.icc
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandLandau.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandLandau.icc
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandPoisson.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandPoisson.icc
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandPoissonQ.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandPoissonQ.icc
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandPoissonT.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandPoissonT.icc
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandSkewNormal.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandSkewNormal.icc
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandStudentT.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandStudentT.icc
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/Random.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/Random.icc
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandomEngine.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RandomEngine.icc
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/Randomize.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RanecuEngine.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/Ranlux64Engine.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RanluxEngine.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/RanshiEngine.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/Stat.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/TripleRand.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Random/defs.h
  /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Units/PhysicalConstants.h
  /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Units/SystemOfUnits.h
  /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Units/defs.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Utility/defs.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Utility/memory.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Utility/noncopyable.h
+ /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Utility/thread_local.h
  /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Vector/ThreeVector.h
  /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Vector/ThreeVector.icc
  /mjsw/CLHEP/2.4.1.0/install/lib/CLHEP-2.4.1.0/../../include/CLHEP/Vector/defs.h
@@ -1878,6 +1951,7 @@ CMakeFiles/monopole.dir/src/PrimaryGeneratorAction.cc.o
  /mjsw/GEANT/install/include/Geant4/G4VUserEventInformation.hh
  /mjsw/GEANT/install/include/Geant4/G4VUserPrimaryGeneratorAction.hh
  /mjsw/GEANT/install/include/Geant4/G4ios.hh
+ /mjsw/GEANT/install/include/Geant4/Randomize.hh
  /mjsw/GEANT/install/include/Geant4/evtdefs.hh
  /mjsw/GEANT/install/include/Geant4/g4root.hh
  /mjsw/GEANT/install/include/Geant4/g4root_defs.hh

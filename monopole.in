@@ -27,5 +27,5 @@
 
 #
 /gun/particle monopole
-/gun/energy 100 GeV
+/gun/energy 10000 GeV
 /run/beamOn 10000
