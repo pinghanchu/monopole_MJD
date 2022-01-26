@@ -23,10 +23,12 @@ Modify the line "fMonopoleMass = 1e12*GeV;"
 
 3. ./analysis/run.pl 1e12
 1e12 is the monopole mass used in G4MonopolePhysics.cc
-The script will run replace.pl and generate Monte Carlo with the energy from 1e-5 GeV to 1e5 GeV.
+The script will run replace.pl and generate Monte Carlo with the energy from 1e-5 GeV to 1e10 GeV.
 
 4. ./analysis/replace.pl $erg
 $erg is the monopole energy. The script will modify the monopole energy in monopole.in.
+./analysis/replacemass.pl $mass
+$mass is the monopole mass.
 
 5. ./analysis/build.pl 1e12GeV
 1e12GeV is the monopole mass.
@@ -41,3 +43,6 @@ Need to run python in the default environment of CORI and ">module load python".
 
 #Monte Carlo
 The unit of Monte Carlo: time(ns), energy(MeV), length(mm)
+
+data1: vertical monopole beam
+data2: hemispherical monopole beam

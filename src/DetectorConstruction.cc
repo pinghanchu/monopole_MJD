@@ -74,9 +74,9 @@ DetectorConstruction::DetectorConstruction()
 {
   // default parameter values
   
-  fAbsorSizeX = fAbsorSizeY = fAbsorSizeZ = 10 * cm;
-  fWorldSizeX = fWorldSizeY = 10. * m;
-  fWorldSizeZ = 3000 * m;
+  fAbsorSizeX = fAbsorSizeY = fAbsorSizeZ = 10.*cm; // dummy parameters; replaced by the real MJD detectors
+  fWorldSizeX = fWorldSizeY = 3000.*m;
+  fWorldSizeZ = 3000.*m;
   fMaxStepSize = 5 * mm;
   G4cout << "World size X,Y:"<<fWorldSizeX << G4endl;
 
@@ -85,12 +85,18 @@ DetectorConstruction::DetectorConstruction()
   //  fMonFieldSetup = G4MonopoleFieldSetup::GetMonopoleFieldSetup();
   fMonFieldSetup = new G4MonopoleFieldSetup();
 
-  //SetMaterial("G4_Al");
   SetMaterial("G4_Ge");
   
   G4NistManager* nist = G4NistManager::Instance();
-  fWorldMaterial = nist->FindOrBuildMaterial("G4_Si");
-  
+  fWorldMaterial = nist->FindOrBuildMaterial("G4_SILICON_DIOXIDE");
+
+  //G4Material* mat_Silicon = nist->FindOrBuildMaterial("G4_Si");
+  //G4Material* mat_Oxygen = nist->FindOrBuildMaterial("G4_O");
+  //G4Material* mat_Rock= new G4Material("Rock", 2.86 * g / cm3, 5);
+  //G4double sum_minors = 0.22/1000000. + 0.33/1000000. + 0.96/100.;
+  //mat_Rock->AddMaterial(mat_Silicon, 1./3.*(1-sum_minors));
+  //mat_Rock->AddMaterial(mat_Oxygen, 2./3.*(1-sum_minors));
+
   //fWorldMaterial=  G4NistManager::Instance()->FindOrBuildMaterial("G4_Galactic");  
 
   // create commands for interactive definition of the detector
@@ -118,7 +124,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4Box * sWorld = new G4Box("world",                                
                fWorldSizeX, fWorldSizeY, fWorldSizeZ);
 
-  G4Material* mat_Rock= new G4Material("Rock", 2.86 * g / cm3, 5);
+  //G4Material* mat_Rock= new G4Material("Rock", 2.86 * g / cm3, 5);
 
   G4LogicalVolume * lWorld = new G4LogicalVolume(sWorld,
                                                  fWorldMaterial,
@@ -160,7 +166,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   using namespace std;
   vector<string> Detectors;
   string input;
-  G4String s;
+  G4String s1;
 
   G4int Detector_number;
   G4String Detector_name;
@@ -189,22 +195,23 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
     Detector_r.clear();
     Detector_z.clear();
     stringstream ss(Detectors[i]);
-    while (ss >> s) {
+
+    while (ss >> s1) {
       j++;
-      if (j==1) Detector_number += atoi(s.c_str())*100;
-      else if (j==2) Detector_number += atoi(s.c_str())*10;
-      else if (j==3) Detector_number += atoi(s.c_str())*1;
-      else if (j==4) Detector_position.setX(atof(s.c_str())*mm);
-      else if (j==5) Detector_position.setY(atof(s.c_str())*mm);
-      else if (j==6) Detector_position.setZ(atof(s.c_str())*mm);
-      else if (j==7) Detector_name = "Det_" + s;
-      else if (j==8) Detector_slices = atoi(s.c_str());
-      else if (j==9) Detector_r.push_back((G4double) atof(s.c_str())*mm);
-      else if (j==10) Detector_z.push_back((G4double) atof(s.c_str())*mm);
-      else if (j==11) Detector_r.push_back((G4double) atof(s.c_str())*mm);
-      else if (j==12) Detector_z.push_back((G4double) atof(s.c_str())*mm);
-      else if (j==13) Detector_r.push_back((G4double) atof(s.c_str())*mm);
-      else if (j==14) Detector_z.push_back((G4double) atof(s.c_str())*mm);
+      if (j==1) Detector_number += atoi(s1.c_str())*100;
+      else if (j==2) Detector_number += atoi(s1.c_str())*10;
+      else if (j==3) Detector_number += atoi(s1.c_str())*1;
+      else if (j==4) Detector_position.setX(atof(s1.c_str())*mm);
+      else if (j==5) Detector_position.setY(atof(s1.c_str())*mm);
+      else if (j==6) Detector_position.setZ(atof(s1.c_str())*mm);
+      else if (j==7) Detector_name = "Det_" + s1;
+      else if (j==8) Detector_slices = atoi(s1.c_str());
+      else if (j==9) Detector_r.push_back((G4double) atof(s1.c_str())*mm);
+      else if (j==10) Detector_z.push_back((G4double) atof(s1.c_str())*mm);
+      else if (j==11) Detector_r.push_back((G4double) atof(s1.c_str())*mm);
+      else if (j==12) Detector_z.push_back((G4double) atof(s1.c_str())*mm);
+      else if (j==13) Detector_r.push_back((G4double) atof(s1.c_str())*mm);
+      else if (j==14) Detector_z.push_back((G4double) atof(s1.c_str())*mm);
     }
 
     if(Detector_slices==2){
@@ -223,7 +230,8 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
     const G4double z[] = {Detector_z[0],Detector_z[1],Detector_z[2]};
 
     G4Polycone* Det_solid = new G4Polycone(Detector_name_sol,0,2*M_PI,3,z,r_i,r);
-    G4LogicalVolume* fLogAbsor = new G4LogicalVolume(Det_solid,fAbsorMaterial,Detector_name_log);
+    //G4LogicalVolume* 
+    fLogAbsor = new G4LogicalVolume(Det_solid,fAbsorMaterial,Detector_name_log);
     fLogAbsor->SetUserLimits(new G4UserLimits(fMaxStepSize));
 
     new G4PVPlacement (Detrotation,Detector_position,fLogAbsor,Detector_name,lWorld,false,Detector_number,0);
@@ -241,8 +249,8 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 void DetectorConstruction::PrintParameters()
 {
   G4cout << "\n---------------------------------------------------------\n";
-  G4cout << "---> The Absorber is " << G4BestUnit(fAbsorSizeX, "Length")
-         << " of " << fAbsorMaterial->GetName() << G4endl;
+  //G4cout << "---> The Absorber is " << G4BestUnit(fAbsorSizeX, "Length")
+  //       << " of " << fAbsorMaterial->GetName() << G4endl;
   G4cout << "\n---------------------------------------------------------\n";
 
 }

@@ -38,5 +38,3 @@ while(my $line = <$fin>){
     print $fout $line;
 }
 close $fin;
-
-

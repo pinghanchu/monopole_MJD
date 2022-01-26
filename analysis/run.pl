@@ -13,15 +13,19 @@ print($ERG,"\n");
 use warnings;
 use strict;
 
+system("./replacemass.pl $mass");
 chdir "../monopole-build/";
-
-for (my $i=-5; $i<=5;$i++){
+system("make -j4");
+for (my $i=-5; $i<=10;$i++){
     print($i);
     my $erg = "1e".$i;
     my $outputlog = "../log/log_".$mass."GeV_".$erg."GeV.txt";
     my $outputin = "monopole_".$erg."GeV.in";
     my $outputroot = "../data/monopole_".$mass."GeV_".$erg."GeV.root";
+    #system("rm $outputroot");
     system("./replace.pl $erg");
     system("./monopole $outputin >& $outputlog");
     system("mv monopole.root $outputroot");
 }
+#cddir "../analysis/";
+

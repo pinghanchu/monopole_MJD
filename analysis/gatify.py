@@ -67,9 +67,9 @@ def fill(mass, energy):
              
     return dfnew
 
-for j in range(11,16):
+for j in range(10,31):
     mass="1e{}".format(j)
-    for i in range(-5,6):
+    for i in range(-5,11):
         energy = "1e{}".format(i)
         print(mass, energy)
         fill(mass,energy)

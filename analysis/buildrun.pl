@@ -13,7 +13,7 @@ if( $numArgs < 1){
 use warnings;
 use strict;
 
-for (my $i=11; $i<=15;$i++){
+for (my $i=10; $i<=30;$i++){
     print($i);
     my $mass = "1e".$i."GeV";
     system("./build.pl $mass");

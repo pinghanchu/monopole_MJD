@@ -8,7 +8,7 @@ if( $numArgs < 2){
 }
 
 my $mass = $ARGV[0];
-for (my $i=-5;$i<=5;$i++){
+for (my $i=-5;$i<=10;$i++){
     my $energy = "1e".$i."GeV";
     my $outputcsv = "../data/data_".$mass."_".$energy.".csv";
     my $outputroot = "../data/monopole_".$mass."_".$energy.".root";

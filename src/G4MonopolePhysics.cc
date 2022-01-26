@@ -75,7 +75,7 @@ G4MonopolePhysics::G4MonopolePhysics(const G4String& nam)
   //  fMagCharge = -1.0;
   //  fElCharge  = -50.0;
   fElCharge  = 0.0;
-  fMonopoleMass = 1e15*GeV;
+  fMonopoleMass = 1e30*GeV;
   SetPhysicsType(bUnknown);
   fMessenger = new G4MonopolePhysicsMessenger(this);
 }

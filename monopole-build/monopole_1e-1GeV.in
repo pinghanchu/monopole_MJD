@@ -9,7 +9,7 @@
 /testex/run/verbose 1
 /tracking/verbose 0
 #
-/testex/det/setMat G4_Ge
+/testex/det/setMat G4_Si
 /testex/det/setSizeX  10 cm
 /testex/det/setSizeY 20 cm
 /testex/det/setSizeZ 20 cm
@@ -27,5 +27,5 @@
 
 #
 /gun/particle monopole
-/gun/energy 1e-1 GeV
+/gun/energy 10000 GeV
 /run/beamOn 10000
