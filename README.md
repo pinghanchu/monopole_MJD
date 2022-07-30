@@ -4,7 +4,7 @@
 
 2. Output the stepping parameters.
 
-3. Use Majorana Demonstrator detectors.
+3. Use Majorana Demonstrator detectors (defined in Detectorposition.txt).
 
 4. Assume the monopoles randomly injecting from the hemisphere 
 
