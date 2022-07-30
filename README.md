@@ -17,7 +17,7 @@
 
 4. $make
 
-## Excute monopole_MJD
+## Execute monopole_MJD
 
 1. Need copy ./Detectorposition.txt to ./monopole-build/
 
@@ -27,7 +27,7 @@ This generates monopole.root
 3. Need to modify the monopole mass in ./src/G4MonopolePhysics.cc and re-compile before generating Monte Carlo
 Modify the line "fMonopoleMass = 1e12*GeV;"
 
-## Excute Scripts
+## Execute Scripts
 1. $./analysis/run.pl 1e12
 1e12 is the monopole mass used in G4MonopolePhysics.cc
 The script will run replace.pl and generate Monte Carlo with the energy from 1e-5 GeV to 1e10 GeV.
