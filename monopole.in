@@ -11,8 +11,7 @@
 #
 /testex/det/setMat G4_Si
 /testex/det/setSizeX  10 cm
-/testex/det/setSizeY 20 cm
-/testex/det/setSizeZ 20 cm
+/testex/det/setSizeYZ 20 cm
 /testex/det/setStepSize 0.2 mm
 
 /testex/run/binSize 0.2 mm
@@ -27,5 +26,5 @@
 
 #
 /gun/particle monopole
-/gun/energy 10000 GeV
-/run/beamOn 10000
+/gun/energy 100 GeV
+/run/beamOn 100
