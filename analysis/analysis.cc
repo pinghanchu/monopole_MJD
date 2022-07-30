@@ -24,7 +24,7 @@ using namespace std;
 void analysis()
 {
 
-  ifstream fin("/global/homes/p/pchu/work/g4work/monopole_MJD/Detectorposition.txt");
+  ifstream fin("/path/to/Detectorposition.txt");
   vector<string> Detectors;
   string input;
   while(getline(fin,input)){
@@ -100,8 +100,8 @@ void analysis()
   }
 
   TChain* fTree = new TChain("MonopoleTree"); 
-  fTree->Add("/global/homes/p/pchu/work/g4work/monopole_MJD/analysis/monopole.root");
-  ofstream fout("analysis.csv",ios::app); 
+  fTree->Add("/path/to/monopole.root");
+  ofstream fout("./analysis.csv",ios::app); 
   fout.precision(12);
   cout << "Added files" << endl;
   cout << "-------" << endl;
@@ -160,16 +160,6 @@ void analysis()
   vector<Double_t> TDetY;
   vector<Double_t> TDetZ;
   
-  /*
-  TFile *hfile = TFile::Open("build.root","RECREATE");
-  TTree *tree = new TTree("monopole","");
-  tree->Branch("TEventID",&TEventID,"TEventID/I");
-  tree->Branch("TEsum",&TEsum,"TEsum/D");
-  tree->Branch("TEhit",&TEhit);
-  tree->Branch("TChannel",&TChannel);
-  tree->Branch("TStartTime",&TStartTime);
-  tree->Branch("TEndTime",&TEndTime);
-  */
   Double_t pid,z,a,charge,energy,Edep,timestamp,weight,posx,posy,posz,velocity,u,v,w,detPx,detPy,detPz;
   Int_t trackid,parentid,channel;
   string det_name;
@@ -197,7 +187,6 @@ void analysis()
   }
   
   for (Int_t i=0;i<nentries;i++){
-  //for (Int_t i=0;i<1000;i++){
     fTree->GetEntry(i);    
     pid=PID;
     z=Z;
@@ -222,10 +211,8 @@ void analysis()
     detPx = detpx[det_name];
     detPy = detpy[det_name];
     detPz = detpz[det_name];
-    //cout << i << "," << det_name << endl;
 
     if (eventid!=eventid_last){
-      //cout << eventid_last << "," << eventid << endl;
       if(energy_event.size()>0){
 
 	// Initialize sum energy
@@ -332,7 +319,7 @@ void analysis()
             Double_t TPhi_stdev = sqrt(phi_sq_sum /Phi.size() - TPhi_mean * TPhi_mean);	    
 	    CosTheta.clear();
 	    Phi.clear();
-	    // Print out
+
 	    for(size_t j=0;j<TEhit.size();j++){
 	      fout << eventid_last << "," << setprecision(5) << Esum << ","<< TEhit.size() << "," << setprecision(12) << TTdiff_mean << "," << TTdiff_stdev << "," << TEhit_mean <<"," << TEhit_stdev << "," << TCostheta_mean << "," << TCostheta_stdev << "," << TPhi_mean << "," << TPhi_stdev << "," << TChannel.at(j) << "," << TEhit.at(j) << "," << setprecision(12) << TStartTime.at(j) << "," << TEndTime.at(j)<<"," << TDetX.at(j) << "," << TDetY.at(j) << "," << TDetZ.at(j) << endl; 
 	    }
@@ -368,7 +355,6 @@ void analysis()
     }     
     eventid_last=eventid;
   }
-  //  hfile->Write();
 
   return 0;
 
